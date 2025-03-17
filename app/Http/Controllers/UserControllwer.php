@@ -19,13 +19,13 @@ class UserControllwer extends Controller
    public function show(Request $request, $id){
       
     $user_data = User::role('user')->orderBy('id')->get();
-    dd($user_data);
+  
     
       return view('user.show',compact('user_data'));
    }
    public function edit(Request $request, $id){
-    $user_edit = User::role('user')->orderBy('id')->get();
-    return view('user.edit',compact('user_data'));
+    $user = User::find($id);
+    return view('user.edit',compact('user'));
    }
    public function destroy(){
     return "destroy";
