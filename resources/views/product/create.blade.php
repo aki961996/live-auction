@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Create Product') }}
+            {{ __('Create Products') }}
         </h2>
     </x-slot>
 
@@ -29,7 +29,7 @@
                             <div class="col-6">
                                 <div class="mb-3">
                                     <label for="description" class="form-label">Description</label>
-                                    <textarea name="description"  placeholder="Description" class="form-control">{{ old('description') }}</textarea>
+                                    <textarea name="description"  placeholder="Description"  class="form-control">{{ old('description') }}</textarea>
                                     <div class="error_style" style="color: red;">{{ $errors->first('description') }}</div>
                                 </div>
                             </div>
@@ -38,7 +38,7 @@
 
                                 <div class="mb-3">
                                     <label for="price" class="form-label">Price</label>
-                                    <input type="text" name="price" class="form-control" placeholder="Price">
+                                    <input type="text" name="price" class="form-control" placeholder="Write a price" placeholder="Price">
                                     <div class="error_style" style="color: red">{{$errors->first('price')}}</div>
 
                                 </div>
@@ -49,7 +49,7 @@
 
                                 <div class="mb-3">
                                     <label for="quantity" class="form-label">Quantity</label>
-                                    <input type="text" name="quantity" class="form-control" placeholder="Quantity">
+                                    <input type="text" name="quantity" class="form-control" placeholder="Write a quantity"  placeholder="Quantity">
                                     <div class="error_style" style="color: red">{{$errors->first('quantity')}}</div>
 
                                 </div>
@@ -84,7 +84,7 @@
 
 
 
-                        <button type="submit" class="btn btn-success">Create User</button>
+                        <button type="submit" class="btn btn-success">Create</button>
                     </form>
 
                 </div>

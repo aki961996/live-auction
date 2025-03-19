@@ -15,7 +15,7 @@
                          <a href="{{ route('user.dashboard') }}" class="btn btn-dark mb-3">
                             ← Back
                         </a>
-                        <h2 class="mb-4">Edit UserBidder</h2>
+                        
 
                         <form action="{{route('admin.users.update', encrypt($userBidderData->id))}}" method="POST">
                             @csrf

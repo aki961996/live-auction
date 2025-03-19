@@ -17,20 +17,23 @@
                         
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
-                            <input type="text" name="name" class="form-control" required>
+                            <input type="text" name="name" class="form-control" placeholder="Write a name" >
+                            <div class="error_style" style="color: red">{{$errors->first('name')}}</div>
                         </div>
 
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" name="email" class="form-control" required>
+                            <input type="email" name="email" class="form-control" placeholder="Write a email"  >
+                            <div class="error_style" style="color: red">{{$errors->first('email')}}</div>
                         </div>
 
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
-                            <input type="password" name="password" class="form-control" required>
+                            <input type="password" name="password" class="form-control" placeholder="Write a password" >
+                            <div class="error_style" style="color: red">{{$errors->first('password')}}</div>
                         </div>
 
-                        <button type="submit" class="btn btn-success">Create User</button>
+                        <button type="submit" class="btn btn-success">Create </button>
                     </form>
 
                 </div>

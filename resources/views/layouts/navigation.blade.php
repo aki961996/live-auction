@@ -31,11 +31,13 @@
                         {{ __('Bidder Users') }}
                     </x-nav-link>
                 </div>
+                @if(auth()->user()->hasRole('admin'))
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('product.dashboard')" :active="request()->routeIs('product.dashboard')">
                         {{ __('Products') }}
                     </x-nav-link>
                 </div>
+                @endif
 
               
 

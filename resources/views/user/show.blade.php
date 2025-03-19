@@ -22,7 +22,7 @@
                             <table class="table table-bordered table-striped">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th>ID</th>
+                                        <!-- <th>ID</th> -->
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Created At</th>
@@ -31,7 +31,7 @@
                                 <tbody>
                                     @if($userBidderData)
                                     <tr>
-                                        <td>{{ $userBidderData->id }}</td>
+                                        <!-- <td>{{ $userBidderData->id }}</td> -->
                                         <td>{{ $userBidderData->name }}</td>
                                         <td>{{ $userBidderData->email }}</td>
                                         <td>{{ $userBidderData->created_at->format('d-m-Y H:i') }}</td>
