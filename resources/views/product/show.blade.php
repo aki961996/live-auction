@@ -26,7 +26,7 @@
                                         <th>Title</th>
                                         <th>Description</th>
                                         <th>Price</th>
-                                        <th>Quantity</th>
+                                      
                                         <th>Created By</th>
                                         <th>Image</th>
                                        
@@ -41,7 +41,7 @@
                                         <td>{{ $product_data->title }}</td>
                                         <td>{{ $product_data->description }}</td>
                                         <td>{{ $product_data->price }}</td>
-                                        <td>{{ $product_data->quantity }}</td>
+                                       
 
                                         <td>{{ $product_data->user->name ?? 'N/A' }}</td>
                                         <td><img src="{{ asset('storage/private/product/' . $product_data->image) }}" alt="Product Image" width="50">

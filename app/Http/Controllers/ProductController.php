@@ -30,7 +30,7 @@ class ProductController extends Controller
             'description' => 'required',
             'price' => 'required',
 
-            'quantity' => 'required',
+        
 
             'image' => 'required'
         ]);
@@ -40,7 +40,7 @@ class ProductController extends Controller
 
             'description' => $request->description,
             'price' => $request->price,
-            'quantity' => $request->quantity,
+         
             'user_id' => Auth::id(),
 
         ]);
@@ -100,7 +100,7 @@ class ProductController extends Controller
         $product->description = $request->description;
 
         $product->price = $request->price;
-        $product->quantity = $request->quantity;
+     
 
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\BidderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserControllwer;
@@ -11,10 +12,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
+
+Route::middleware('auth', 'verified' )->group(function () {
+    Route::get('/dashboard', [BidderController::class,'dashboard'])->name('dashboard');
+    Route::get('product/{productId}/bid', [BidderController::class,'placeBidder'])->name('product.placeBidder');
+    
+});
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -23,10 +27,10 @@ Route::middleware('auth')->group(function () {
 
 Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
-   
-    
     // Other routes only accessible by admins
 });
+
+
 
 Route::group(['middleware' => ['auth']], function () {
     

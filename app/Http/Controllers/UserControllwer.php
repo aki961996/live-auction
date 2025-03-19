@@ -38,11 +38,13 @@ class UserControllwer extends Controller
       ]);
 
       // Create new user
-      User::create([
+     $user = User::create([
          'name' => $request->name,
          'email' => $request->email,
          'password' => bcrypt($request->password), // Encrypt password
       ]);
+      // role assignRole bidder
+      $user->assignRole('bidder');
       Alert::success('message', 'User created successfully.');
       return redirect()->route('user.dashboard');
      

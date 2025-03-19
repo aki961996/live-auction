@@ -45,17 +45,7 @@
 
                             </div>
 
-                            <div class="col-6">
-
-                                <div class="mb-3">
-                                    <label for="quantity" class="form-label">Quantity</label>
-                                    <input type="text" name="quantity" class="form-control" placeholder="Write a quantity"  placeholder="Quantity">
-                                    <div class="error_style" style="color: red">{{$errors->first('quantity')}}</div>
-
-                                </div>
-
-                            </div>
-
+                           
                             <div class="col-6">
 
                                 <div class="mb-3">
