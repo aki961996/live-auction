@@ -91,7 +91,7 @@
 
 
 
-                        <button type="submit" class="btn btn-success">Update User</button>
+                        <button type="submit" class="btn btn-success">Update </button>
                     </form>
 
                 </div>
