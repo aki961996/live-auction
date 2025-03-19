@@ -54,9 +54,6 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 
-Route::group(['middleware' => ['permission:edit articles']], function () {
-    Route::get('/articles/edit/{id}', [ArticleController::class, 'edit'])->name('articles.edit');
-    // Other routes that require specific permissions
-});
+
 
 require __DIR__.'/auth.php';
