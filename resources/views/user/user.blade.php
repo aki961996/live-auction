@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <div class="container mt-4">
+                    <div class="container ">
                         <!-- session msg -->
                         @if(session('success'))
                         <div class="alert alert-success">
@@ -19,8 +19,8 @@
                         <!-- Create User Button -->
                         <a href="{{ route('admin.users.create') }}" class="btn btn-success mb-3">
                             ➕ Create User
-                        </a>
-                        <h2 class="mb-4">Bidder Users</h2>
+                        </a> 
+                     
 
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped">
@@ -69,6 +69,12 @@
                                 </tbody>
                             </table>
                         </div>
+                        {{-- pagination --}}
+                <div style="padding: 10px; float:right;">
+                    {!!
+                    $users->appends(\Illuminate\Support\Facades\Request::except('page'))->links()
+                    !!}
+                </div>
                     </div>
                 </div>
             </div>

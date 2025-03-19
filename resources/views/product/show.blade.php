@@ -11,7 +11,7 @@
                 <div class="p-6 text-gray-900">
 
 
-                    <div class="container mt-4">
+                    <div class="container">
                          <!-- Back Button -->
                          <a href="{{ route('product.dashboard') }}" class="btn btn-dark mb-3">
                             ← Back

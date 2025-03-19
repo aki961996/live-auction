@@ -16,9 +16,9 @@ class UserControllwer extends Controller
       // ->when(fn(Builder $query) => $query->latest())
       // ->get();
       // dd($posts);
-      $admin = User::role('admin')->orderBy('id')->first();
+      $adminId = User::role('admin')->orderBy('id')->pluck('id')->first();
+      $users = User::where('id', '!=', $adminId)->paginate(5);
 
-      $users = User::where('id', '!=', optional($admin)->id)->get();
       return view("user.user", compact('users'));
    }
 

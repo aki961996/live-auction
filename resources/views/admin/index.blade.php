@@ -12,7 +12,7 @@
                 <div class="p-6 text-gray-900">
 
 
-                <div class="container mt-4">
+                <div class="container">
     <h2 class="mb-4">Admin</h2>
 
     <div class="table-responsive">
