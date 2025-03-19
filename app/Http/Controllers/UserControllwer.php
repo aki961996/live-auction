@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Database\Eloquent\Builder;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserControllwer extends Controller
 {
@@ -42,8 +43,9 @@ class UserControllwer extends Controller
          'email' => $request->email,
          'password' => bcrypt($request->password), // Encrypt password
       ]);
-
-      return redirect()->route('user.dashboard')->with('success', 'User created successfully.');
+      Alert::success('message', 'User created successfully.');
+      return redirect()->route('user.dashboard');
+     
    }
    public function show(Request $request, $id)
    {
@@ -99,8 +101,9 @@ class UserControllwer extends Controller
             'name' => $request->name,
             'email' => $request->email,
          ]);
-
-         return redirect()->route('user.dashboard')->with('success', 'User bidder updated successfully.');
+         Alert::success('message', 'User bidder updated successfully.');
+         return redirect()->route('user.dashboard');
+         
       } catch (\Exception $e) {
          return redirect()->route('user.dashboard')->with('error', 'Error updating user.');
       }
@@ -114,8 +117,9 @@ class UserControllwer extends Controller
          $user = User::findOrFail($decryptedId);
 
          $user->delete(); // Delete the user
-
-         return redirect()->route('user.dashboard')->with('success', 'User bidder deleted successfully.');
+         Alert::success('message', 'User bidder deleted successfully.');
+         return redirect()->route('user.dashboard');
+         
       } catch (\Exception $e) {
          return redirect()->route('user.dashboard')->with('error', 'Error deleting user.');
       }
