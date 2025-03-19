@@ -17,7 +17,7 @@ class RolePermissionSeeder extends Seeder
     {
         // Create roles
         $adminRole = Role::create(['name' => 'admin']);
-        $userRole = Role::create(['name' => 'user']);
+        $userRole = Role::create(['name' => 'bidder']);
 
         // Create permissions
         $editPermission = Permission::create(['name' => 'edit articles']);
@@ -36,7 +36,7 @@ class RolePermissionSeeder extends Seeder
         // Assign "user" role to all other users except ID 1
         $users = User::where('id', '!=', 1)->get();
         foreach ($users as $user) {
-            $user->assignRole('user');
+            $user->assignRole('bidder');
         }
     }
 }

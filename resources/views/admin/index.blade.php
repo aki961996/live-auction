@@ -13,7 +13,7 @@
 
 
                 <div class="container mt-4">
-    <h2 class="mb-4">Admin Users</h2>
+    <h2 class="mb-4">Admin</h2>
 
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
@@ -31,7 +31,7 @@
                         <td>{{ $admin->id }}</td>
                         <td>{{ $admin->name }}</td>
                         <td>{{ $admin->email }}</td>
-                        <td>{{ $admin->created_at->format('Y-m-d H:i') }}</td>
+                        <td>{{ $admin->created_at->format('d-m-Y H:i') }}</td>
                     </tr>
                 @empty
                     <tr>

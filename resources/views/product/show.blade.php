@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Users details') }}
+            {{ __('Product details') }}
         </h2>
     </x-slot>
 
@@ -13,7 +13,7 @@
 
                     <div class="container mt-4">
                          <!-- Back Button -->
-                         <a href="{{ route('user.dashboard') }}" class="btn btn-dark mb-3">
+                         <a href="{{ route('product.dashboard') }}" class="btn btn-dark mb-3">
                             ← Back
                         </a>
                         <!-- <h2 class="mb-4"> </h2> -->
@@ -23,18 +23,29 @@
                                 <thead class="table-dark">
                                     <tr>
                                         <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
+                                        <th>Title</th>
+                                        <th>Description</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Created By</th>
+                                        <th>Image</th>
+                                       
+                                        
                                         <th>Created At</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if($userBidderData)
+                                    @if($product_data)
                                     <tr>
-                                        <td>{{ $userBidderData->id }}</td>
-                                        <td>{{ $userBidderData->name }}</td>
-                                        <td>{{ $userBidderData->email }}</td>
-                                        <td>{{ $userBidderData->created_at->format('d-m-Y H:i') }}</td>
+                                        <td>{{ $product_data->id }}</td>
+                                        <td>{{ $product_data->title }}</td>
+                                        <td>{{ $product_data->description }}</td>
+                                        <td>{{ $product_data->price }}</td>
+                                        <td>{{ $product_data->quantity }}</td>
+
+                                        <td>{{ $product_data->user->name ?? 'N/A' }}</td>
+                                        <td><img src="{{ asset('storage/private/product/' . $product_data->image) }}" alt="Product Image" width="50">
+                                        <td>{{ $product_data->created_at->format('d-m-Y H:i') }}</td>
                                     </tr>
                                     @else
                                     <tr>

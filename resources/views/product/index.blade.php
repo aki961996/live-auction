@@ -1,9 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('User Bidder') }}
+            {{ __('Products') }}
         </h2>
     </x-slot>
+
+    @include('sweetalert::alert')
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -17,42 +19,42 @@
                         </div>
                         @endif
                         <!-- Create User Button -->
-                        <a href="{{ route('admin.users.create') }}" class="btn btn-success mb-3">
-                            ➕ Create User
+                        <a href="{{route('product.create')}}" class="btn btn-success mb-3">
+                            ➕ Create Product
                         </a>
-                        <h2 class="mb-4">Bidder Users</h2>
+                        
 
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-
+                                        <th>Title</th>
+                                        <th>Image</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse($users as $user)
+                                    @forelse($products as $product)
                                     <tr>
-                                        <td>{{ $user->id }}</td>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $product->id }}</td>
+                                        <td>{{ $product->title }}</td>
+                                        <td><img src="{{ asset('storage/private/product/' . $product->image) }}" alt="Product Image" width="50">
+                                        </td>
 
                                         <td>
                                             <!-- View Button -->
-                                            <a href="{{ route('admin.users.show', encrypt($user->id)) }}" class="btn btn-info btn-sm">
+                                            <a href="{{ route('product.show', encrypt($product->id)) }}" class="btn btn-info btn-sm">
                                                 View
                                             </a>
 
                                             <!-- Edit Button -->
-                                            <a href="{{ route('admin.users.edit', encrypt($user->id)) }}" class="btn btn-primary btn-sm">
+                                            <a href="{{ route('product.edit', encrypt($product->id)) }}" class="btn btn-primary btn-sm">
                                                 Edit
                                             </a>
 
                                             <!-- Delete Button (with confirmation) -->
-                                            <form action="{{ route('admin.users.destroy', encrypt($user->id)) }}" method="POST" class="d-inline">
+                                            <form action="{{ route('product.destroy', encrypt($product->id)) }}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?')">

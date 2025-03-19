@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserControllwer;
 use Illuminate\Support\Facades\Route;
@@ -29,14 +30,23 @@ Route::group(['middleware' => ['role:admin']], function () {
 
 Route::group(['middleware' => ['auth']], function () {
     
+    // usersapi
     Route::get('/user', [UserControllwer::class, 'index'])->name('user.dashboard');
- 
-
+    Route::get('/admin/users/create', [UserControllwer::class, 'create'])->name('admin.users.create');
+    Route::post('/admin/users/store', [UserControllwer::class, 'store'])->name('admin.users.store');
      Route::get('/user/show/{id}', [UserControllwer::class, 'show'])->name('admin.users.show');
      Route::get('/user/edit/{id}', [UserControllwer::class, 'edit'])->name('admin.users.edit');
-     Route::get('/user/destroy/{id}', [UserControllwer::class, 'destroy'])->name('admin.users.destroy');
+     Route::put('/user/update/{id}', [UserControllwer::class, 'update'])->name('admin.users.update');
+     Route::delete('/user/destroy/{id}', [UserControllwer::class, 'destroy'])->name('admin.users.destroy');
   
-    // Other routes only accessible by admins
+    //products api
+    Route::get('/product', [ProductController::class, 'index'])->name('product.dashboard');
+    Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
+    Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
+     Route::get('/product/show/{id}', [ProductController::class, 'show'])->name('product.show');
+     Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
+     Route::post('/product/update/{id}', [ProductController::class, 'update'])->name('product.update');
+     Route::delete('/product/destroy/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
 });
 
 
