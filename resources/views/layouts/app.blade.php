@@ -47,7 +47,9 @@
             animation: colorChange 5s infinite;
         }
     </style>
-
+    
+    <!-- {{-- css --}}
+    @yield('css') -->
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>

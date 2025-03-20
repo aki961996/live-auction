@@ -16,7 +16,6 @@ class BidderController extends Controller
     public function dashboard()
     {
         $products = Product::paginate(5);
-
         $bidded_data = Bidder::with(['user', 'product'])
             ->orderBy('created_at', 'desc')
             ->get();
@@ -25,7 +24,6 @@ class BidderController extends Controller
     public function showBidderForm($productId)
     {
         $decryptedProductId = decrypt($productId);
-
         $product = Product::findOrFail($decryptedProductId);
         return view('bidder.place_bidder', compact('product'));
     }
@@ -47,7 +45,6 @@ class BidderController extends Controller
             'amount' => $request->amount,
         ];
         $bid = Bidder::create($bidderData);
-        
         // Trigger an event
         event(new BidderPlacedEvent($bid));
         //  return "Event done...";

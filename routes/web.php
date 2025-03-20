@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BidderController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserControllwer;
@@ -18,6 +19,12 @@ Route::middleware('auth', 'verified' )->group(function () {
     Route::get('/dashboard', [BidderController::class,'dashboard'])->name('dashboard');
     Route::get('/product/bidder/{productId}', [BidderController::class,'showBidderForm'])->name('product.placeBidder');
     Route::post('/product/bidder/{productId}', [BidderController::class, 'placeBidder'])->name('product.placeBidder.submit');
+
+    // msg
+    Route::get('/message', [MessageController::class,'dashboard'])->name('message.dashboard');
+     //eventmsg
+     Route::post('send-message', [MessageController::class, 'sendMessage'])->name('send-message');
+
     
 });
 Route::middleware('auth')->group(function () {
