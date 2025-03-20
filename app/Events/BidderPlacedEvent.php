@@ -14,11 +14,13 @@ class BidderPlacedEvent implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $bid;
+    public $imageUrl; 
 
     public function __construct(Bidder $bid)
     {
 
         $this->bid = $bid->load(['product', 'user']);
+        $this->imageUrl = asset('storage/private/product/' . $bid->product->image);
     }
 
       /**

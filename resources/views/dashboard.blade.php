@@ -160,14 +160,14 @@
                         <td>${data.bid.user.name}</td>
                         <td>${data.bid.product.title}</td>
                         <td>${data.bid.amount}</td>
-                        <td><img src="${data.bid.product.image}" alt="Product Image" width="50"></td>
+                        <td><img src="${data.imageUrl}" alt="Product Image" width="50"></td>
                         <!-- <td>
                             <a href="http://127.0.0.1:8000/product/bidder/eyJpdiI6IjhMNUlWTUxWZUZPV2pTM3dkeXk1QVE9PSIsInZhbHVlIjoiamhVOVdiU0FWd1hnRXh5b0M1eEYrQT09IiwibWFjIjoiNTliMzYyNThjNzY0M2Y0ZmQ2ZmFkYjdkYWQzMzdmOTZkODkxNjNiNzljZjFkNTkwNzViNjQyZmNkYjE4YTY5MCIsInRhZyI6IiJ9" class="btn btn-info btn-sm">
                                 Bidder
                             </a>
                         </td> -->
                     </tr>`;
-            $('#bidded-products tbody tr:first').prepend(html);
+            $('#bidded-products tbody').prepend(html);
 
         });
     </script>

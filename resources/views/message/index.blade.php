@@ -29,7 +29,7 @@
                                             <!-- Messages will be appended here -->
                                         </div>
 
-                                        <input type="hidden" id="receiver_id" name="receiver_id" value="2">
+                                        <input type="hidden" id="receiver_id" name="receiver_id" value="1">
                                         <div data-mdb-input-init class="form-outline">
                                             <textarea class="form-control bg-body-tertiary" name="message" id="message"
                                                 rows="4" placeholder="Type your message"></textarea>
@@ -70,10 +70,13 @@
 //     });
 Echo.channel('chat-room')
 .listen('MessageSent', (e) => {
-console.log(e.message, 'msg');
+  
+// console.log(e.message, 'msg');
 if (e.message != null) {
+   
 
   let userId = "{{ auth()->id() }}";
+
     if (e.message.sender_id == userId) {
     $('#chat-container').append(`
   <div class="d-flex flex-row justify-content-start mb-4">
@@ -96,12 +99,6 @@ if (e.message != null) {
     `);
     }
 
-
-
-
-
-
-   
 }
 });
 </script>
@@ -120,8 +117,8 @@ if (e.message != null) {
                let receiver_id = $('#receiver_id').val();
                
                 $.ajax({
-                    url: "{{ route('send-message') }}", // Replace with your server endpoint
-                    method: 'POST', // or 'GET' depending on your needs
+                    url: "{{ route('send-message') }}",
+                    method: 'POST', 
                     data: { message, receiver_id},
                     success: function(response) {
                         console.log(response);

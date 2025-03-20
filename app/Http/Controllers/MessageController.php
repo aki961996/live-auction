@@ -10,12 +10,13 @@ use Illuminate\Support\Facades\Auth;
 class MessageController extends Controller
 {
     public function dashboard(){
-        
+
         return view('message.index');
     }
     public function sendMessage(Request $request)
     {
 
+      
         try {
             $msg = Message::create([
                 'sender_id' => Auth::id(),
