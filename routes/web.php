@@ -16,7 +16,8 @@ Route::get('/', function () {
 
 Route::middleware('auth', 'verified' )->group(function () {
     Route::get('/dashboard', [BidderController::class,'dashboard'])->name('dashboard');
-    Route::get('product/{productId}/bid', [BidderController::class,'placeBidder'])->name('product.placeBidder');
+    Route::get('/product/bidder/{productId}', [BidderController::class,'showBidderForm'])->name('product.placeBidder');
+    Route::post('/product/bidder/{productId}', [BidderController::class, 'placeBidder'])->name('product.placeBidder.submit');
     
 });
 Route::middleware('auth')->group(function () {
