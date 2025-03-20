@@ -153,6 +153,8 @@
         channel.bind('bidder-event', function(data) {
             // console.log('Received bidder event:', data);
             // console.log(JSON.stringify(data));
+            alert(`New bid placed! \nAmount: ${data.bid.amount} \nUser: ${data.bid.user.name} \nProduct: ${data.bid.product.title}`);
+            
             let html = `<tr>
                         <td>${data.bid.id}</td>
                         <td>${data.bid.user.name}</td>
