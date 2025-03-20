@@ -5,17 +5,20 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                       
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
+                @if(auth()->user()->hasRole('bidder'))
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Bidder products') }}
                     </x-nav-link>
                 </div>
+                @endif
                  <!-- Additional Navigation for Admins Only -->
                  @if(auth()->user()->hasRole('admin'))
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
@@ -26,11 +29,13 @@
                 @endif
 
                 <!-- Navigation for Users (Everyone Can See) -->
+                @if(auth()->user()->hasRole('admin'))
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('user.dashboard')" :active="request()->routeIs('user.dashboard')">
                         {{ __('Bidder Users') }}
                     </x-nav-link>
                 </div>
+                @endif
                 @if(auth()->user()->hasRole('admin'))
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('product.dashboard')" :active="request()->routeIs('product.dashboard')">
@@ -38,6 +43,8 @@
                     </x-nav-link>
                 </div>
                 @endif
+
+              
 
               
 
