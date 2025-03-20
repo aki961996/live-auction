@@ -37,7 +37,7 @@
                                         <td><img src="{{ asset('storage/private/product/' . $product->image) }}" alt="Product Image" width="50"></td>
                                         <td>
                                             <a href="{{route('product.placeBidder', encrypt($product->id))}}" class="btn btn-info btn-sm">
-                                                Bidder
+                                              Bid
                                             </a>
                                         </td>
                                     </tr>
