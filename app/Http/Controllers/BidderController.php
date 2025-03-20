@@ -48,7 +48,7 @@ class BidderController extends Controller
         // Trigger an event
         event(new BidderPlacedEvent($bid));
         //  return "Event done...";
-        // Alert::success('message', 'Bid placed successfully');
-        return redirect()->back();
+       
+        return redirect()->back()->with('success', 'Bid placed successfully');
     }
 }
