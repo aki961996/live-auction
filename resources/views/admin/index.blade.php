@@ -13,11 +13,7 @@
 
 
                 <div class="container">
-<<<<<<< HEAD
-   
-=======
   
->>>>>>> 3ccf1f22bc3603e2248c335fb979557e368841bf
 
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
