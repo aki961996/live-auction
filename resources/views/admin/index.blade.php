@@ -13,7 +13,7 @@
 
 
                 <div class="container">
-    <h2 class="mb-4">Admin</h2>
+   
 
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
@@ -22,6 +22,7 @@
                     <th>ID</th>
                     <th>Name</th>
                     <th>Email</th>
+                   
                     <th>Created At</th>
                 </tr>
             </thead>
@@ -31,6 +32,7 @@
                         <td>{{ $admin->id }}</td>
                         <td>{{ $admin->name }}</td>
                         <td>{{ $admin->email }}</td>
+                       
                         <td>{{ $admin->created_at->format('d-m-Y H:i') }}</td>
                     </tr>
                 @empty

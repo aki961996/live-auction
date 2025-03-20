@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\RedirectResponse;
 
 class ProductController extends Controller
 {
@@ -21,7 +22,7 @@ class ProductController extends Controller
         return view('product.create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
 
         // dd($request->all());
@@ -90,7 +91,7 @@ class ProductController extends Controller
         }
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $id): RedirectResponse
     {
         $decryptedId = decrypt($id);
         $product = Product::find($decryptedId);
@@ -116,7 +117,7 @@ class ProductController extends Controller
         return redirect()->route('product.dashboard');
     }
 
-    public function destroy($id)
+    public function destroy($id): RedirectResponse
     {
         try {
             $decryptedId = decrypt($id);
