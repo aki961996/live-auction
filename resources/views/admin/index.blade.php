@@ -13,7 +13,7 @@
 
 
                 <div class="container">
-    <h2 class="mb-4">Admin</h2>
+  
 
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
