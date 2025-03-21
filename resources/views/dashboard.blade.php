@@ -37,9 +37,9 @@
                                         <td><img src="{{ asset('storage/private/product/' . $product->image) }}" alt="Product Image" width="50"></td>
                                         <td>
                                             <a id="bidButton_{{ $product->id }}" href="{{route('product.placeBidder', encrypt($product->id))}}" class="btn btn-info btn-sm">
-                                              Bid
+                                                Bid
                                             </a>
-                                            <div id="timer_{{ $product->id }}"  data-bid-time="{{$product->bid_time_left}}" class="timer"></div>
+                                            <div id="timer_{{ $product->id }}" data-bid-time="{{$product->bid_time_left}}" class="timer"></div>
                                         </td>
                                     </tr>
                                     @empty
@@ -108,12 +108,7 @@
                             </table>
                         </div>
 
-                        {{-- Pagination --}}
-                        <div style="padding: 10px; float:right;">
-                            {!!
-                            $products->appends(\Illuminate\Support\Facades\Request::except('page'))->links()
-                            !!}
-                        </div>
+                      
                     </div>
                 </div>
             </div>
@@ -155,7 +150,7 @@
             // console.log('Received bidder event:', data);
             // console.log(JSON.stringify(data));
             alert(`New bid placed! \nAmount: ${data.bid.amount} \nUser: ${data.bid.user.name} \nProduct: ${data.bid.product.title}`);
-            
+
             let html = `<tr>
                         <td>${data.bid.id}</td>
                         <td>${data.bid.user.name}</td>
@@ -172,26 +167,28 @@
 
         });
 
+
+        //jquery
         function updateTimer() {
 
             let products = $(document).find('.timer');
 
-           
+
             products.each(function() {
                 let productId = $(this).attr('id')
                 let bidTime = $(this).data('bid-time')
                 let timeParts = bidTime.split(":");
-                let bidTimeMinute = parseInt(timeParts[0]); 
-                let bidTimeSeconds = parseInt(timeParts[1]); 
+                let bidTimeMinute = parseInt(timeParts[0]);
+                let bidTimeSeconds = parseInt(timeParts[1]);
 
-             
+
                 if (bidTimeMinute === 0 && bidTimeSeconds === 0) {
                     $(this).text("Bid closed!");
-                    $('#bidButton_' +  productId.split('_')[1]).addClass('d-none');
+                    $('#bidButton_' + productId.split('_')[1]).addClass('d-none');
                     return;
                 }
 
-               
+
                 if (bidTimeSeconds === 0) {
                     bidTimeMinute--;
                     bidTimeSeconds = 59;
@@ -199,7 +196,7 @@
                     bidTimeSeconds--;
                 }
 
-               
+
                 let formattedTime =
                     (bidTimeMinute < 10 ? "0" : "") +
                     bidTimeMinute +
@@ -207,10 +204,10 @@
                     (bidTimeSeconds < 10 ? "0" : "") +
                     bidTimeSeconds;
 
-                
+
                 $(this).text(formattedTime);
 
-                
+
                 $(this).data("bid-time", formattedTime);
 
             })
@@ -218,7 +215,6 @@
 
         let timerInterval = setInterval(updateTimer, 1000);
         updateTimer();
-
     </script>
 
 
