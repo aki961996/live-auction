@@ -38,9 +38,10 @@ class BidderController extends Controller
             }
         }
 
-        $bidded_data = Bidder::with(['user', 'product'])
-            ->orderBy('created_at', 'desc')
-            ->get();
+        // $bidded_data = Bidder::with(['user', 'product'])
+        //     ->orderBy('created_at', 'desc')
+        //     ->get();
+      $bidded_data = Bidder::with(['user', 'product'])->latest()->get();
         return view('dashboard', compact('products', 'bidded_data'));
     }
     public function showBidderForm($productId)

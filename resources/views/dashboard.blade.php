@@ -183,7 +183,7 @@
 
 
                 if (bidTimeMinute === 0 && bidTimeSeconds === 0) {
-                    $(this).text("Bid closed!");
+                    $(this).text("Bid closed!").css("color", "red"); 
                     $('#bidButton_' + productId.split('_')[1]).addClass('d-none');
                     return;
                 }
