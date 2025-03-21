@@ -6,12 +6,13 @@
     </x-slot>
 
     <div class="py-12">
-    @if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
+
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+            @endif
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
@@ -19,16 +20,16 @@
 
                     <form action="{{ route('product.placeBidder.submit', encrypt($product->id)) }}" method="POST">
                         @csrf
-                        
+
                         <div class="mb-3">
-                        <label for="amount">Bid Amount</label>
-                        <input type="number" name="amount" class="form-control" min="{{ $product->price }}">
+                            <label for="amount">Bid Amount</label>
+                            <input type="number" name="amount" class="form-control" min="{{ $product->price }}">
                             <div class="error_style" style="color: red">{{$errors->first('amount')}}</div>
                         </div>
 
-                      
 
-                     
+
+
 
                         <button type="submit" class="btn btn-success">Create </button>
                     </form>
