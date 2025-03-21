@@ -6,6 +6,8 @@ Live Auction is a real-time bidding platform built using Laravel 11, Livewire, a
 
 Features
 
+Real time chat pusher
+
 User authentication and authorization
 
 Live bidding system
