@@ -60,25 +60,27 @@
 
 <script type="module">
     //     Echo.channel(`chat-room`)
-//     .listen('MessageSent', (e) => {
-//    console.log(e.message,'msg');
-//         if(e.message != null){
-        
-//         }
-       
-   
-//     });
-Echo.channel('chat-room')
-.listen('MessageSent', (e) => {
-  
-// console.log(e.message, 'msg');
-if (e.message != null) {
-   
+    //     .listen('MessageSent', (e) => {
+    //    console.log(e.message,'msg');
+    //         if(e.message != null){
 
-  let userId = "{{ auth()->id() }}";
+    //         }
 
-    if (e.message.sender_id == userId) {
-    $('#chat-container').append(`
+
+    //     });
+    Echo.channel('chat-room')
+        .listen('MessageSent', (e) => {
+            // console.log(e, 'msg');
+
+            console.log(e.message, 'msg');
+            if (e.message != null) {
+
+
+                let userId = "{{ auth()->id() }}";
+
+
+                if (e.message.sender_id == userId) {
+                    $('#chat-container').append(`
   <div class="d-flex flex-row justify-content-start mb-4">
     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp" alt="avatar 1"
         style="width: 45px; height: 100%;">
@@ -87,8 +89,8 @@ if (e.message != null) {
     </div>
 </div>
     `);
-    } else if (e.message.receiver_id == userId) {
-    $('#chat-container').append(`
+                } else if (e.message.receiver_id == userId) {
+                    $('#chat-container').append(`
    <div class="d-flex flex-row justify-content-end mb-4">
     <div class="p-3 me-3 border bg-body-tertiary" style="border-radius: 15px;">
         <p class="small mb-0">${e.message.message}.</p>
@@ -97,40 +99,43 @@ if (e.message != null) {
         style="width: 45px; height: 100%;">
 </div>
     `);
-    }
+                }
 
-}
-});
+            }
+        });
 </script>
 
 <script>
-    $(document).ready(function(){
-            // Set up CSRF token for all AJAX requests
-            $.ajaxSetup({
+    $(document).ready(function() {
+        // Set up CSRF token for all AJAX requests
+        $.ajaxSetup({
             headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
-            });
+        });
 
-            $('#sendBtn').click(function(){
-               let message = $('#message').val();
-               let receiver_id = $('#receiver_id').val();
-               
-                $.ajax({
-                    url: "{{ route('send-message') }}",
-                    method: 'POST', 
-                    data: { message, receiver_id},
-                    success: function(response) {
-                        console.log(response);
-                        // Clear the input field
-                        $('#message').val('');
-                        // alert('Success: ' + response.message);
-                    },
-                    error: function(xhr, status, error) {
-                        alert('Error: ' + xhr.responseText);
-                    }
-                });
+        $('#sendBtn').click(function() {
+            let message = $('#message').val();
+            let receiver_id = $('#receiver_id').val();
+
+            $.ajax({
+                url: "{{ route('send-message') }}",
+                method: 'POST',
+                data: {
+                    message,
+                    receiver_id
+                },
+                success: function(response) {
+                    console.log(response);
+                    // Clear the input field
+                    $('#message').val('');
+                    // alert('Success: ' + response.message);
+                },
+                error: function(xhr, status, error) {
+                    alert('Error: ' + xhr.responseText);
+                }
             });
         });
+    });
 </script>
 @endsection
