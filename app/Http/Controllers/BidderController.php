@@ -16,6 +16,27 @@ class BidderController extends Controller
     public function dashboard()
     {
         $products = Product::paginate(5);
+
+        if($products){
+            foreach($products as $product){
+                $createdAt   = $product['created_at'];
+                $totalCountdown = 5 * 60; // 5 minutes in seconds
+
+                // Get the elapsed time in seconds
+                $elapsedSeconds = $createdAt->diffInSeconds(now());
+
+                // Ensure it doesn't go below 0
+                $remainingSeconds = max(0, $totalCountdown - $elapsedSeconds);
+
+                // Convert back to mm:ss format
+                $remainingMinutes = floor($remainingSeconds / 60);
+                $remainingSeconds = $remainingSeconds % 60;
+
+                $timeLeft = sprintf('%02d:%02d', $remainingMinutes, $remainingSeconds);
+                $product['bid_time_left'] = $timeLeft;
+            }
+        }
+        
         $bidded_data = Bidder::with(['user', 'product'])
             ->orderBy('created_at', 'desc')
             ->get();

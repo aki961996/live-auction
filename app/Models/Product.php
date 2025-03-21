@@ -18,6 +18,10 @@ class Product extends Model
         'image',
     ];
 
+    protected $casts = [
+        'created_at' => 'datetime',
+    ];
+
      
       public function user()
       {
