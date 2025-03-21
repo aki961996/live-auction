@@ -76,6 +76,7 @@ Browse available auctions.
 Place bids in real-time.
 
 Admins can create, update, and manage auctions.
+Admins can create, update, and manage Products.
 
 
 
