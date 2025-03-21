@@ -15,7 +15,9 @@ class BidderController extends Controller
 {
     public function dashboard()
     {
-        $products = Product::orderBy('created_at', 'desc')->paginate(5);
+       
+        $products = Product::latest()->paginate(5);
+
 
 
         if ($products) {
