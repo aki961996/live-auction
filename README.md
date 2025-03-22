@@ -2,7 +2,7 @@ Live Auction
 
 Overview
 
-Live Auction is a real-time bidding platform built using Laravel 11, Livewire, and other modern web technologies. This project allows users to participate in live auctions, bid on items, and view auction results in real-time.
+Live Auction is a real-time bidding platform built using Laravel 12, Livewire, and other modern web technologies. This project allows users to participate in live auctions, bid on items, and view auction results in real-time.
 
 Features
 
